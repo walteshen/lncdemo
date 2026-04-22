@@ -18,9 +18,8 @@ This matches the uploaded base `WACNN` structure, where the model contains `Entr
 This package now assumes:
 
 1. you have **CompressAI installed**, and
-2. the checkpoint you pass to `--checkpoint` matches the **base WACNN**, not `WACNN_Pixel`.
+2. the checkpoint you pass to `--checkpoint` matches the **base WACNN**
 
-If your checkpoint is for `WACNN_Pixel`, this package will still not be the correct inference graph, because `WACNN_Pixel` introduces `Win_noShift_Attention` and other dependencies through `utils.py`. fileciteturn9file0 fileciteturn9file15
 
 ## Installation
 
@@ -31,7 +30,7 @@ pip install torch pillow numpy compressai
 ## Recommended first check
 
 ```bash
-cd lnc_three_terminal_demo_v3
+cd lnc_three_terminal_demo
 PYTHONPATH=. python check_checkpoint.py --checkpoint /path/to/checkpoint_best.pth
 ```
 
@@ -40,7 +39,7 @@ PYTHONPATH=. python check_checkpoint.py --checkpoint /path/to/checkpoint_best.pt
 ### Terminal 1: destination
 
 ```bash
-cd lnc_three_terminal_demo_v3
+cd lnc_three_terminal_demo
 PYTHONPATH=. python destination.py \
   --bind-port 9102 \
   --engine wacnn-demo \
@@ -52,7 +51,7 @@ PYTHONPATH=. python destination.py \
 ### Terminal 2: relay
 
 ```bash
-cd lnc_three_terminal_demo_v3
+cd lnc_three_terminal_demo
 PYTHONPATH=. python relay.py \
   --bind-port 9101 \
   --target-host 127.0.0.1 \
@@ -66,7 +65,7 @@ PYTHONPATH=. python relay.py \
 ### Terminal 3: source
 
 ```bash
-cd lnc_three_terminal_demo_v3
+cd lnc_three_terminal_demo
 PYTHONPATH=. python source.py \
   --target-host 127.0.0.1 \
   --target-port 9101 \
@@ -90,18 +89,3 @@ This is the main knob controlling the trade-off between:
 - fewer/larger packets, and
 - safer per-packet payload size.
 
-## Raw transport mode
-
-If you only want to verify that the three-terminal UDP path works, you can still run:
-
-```bash
---engine raw
-```
-
-That fallback path still uses the old `int16` latent payload demo.
-
-## Why this version is more faithful
-
-Your uploaded paper explicitly models the transmission system as **encoder + entropy model + packetization + decoder**, and the loss also includes entropy-coded bitrate terms for both the source latent and the recoded latent. fileciteturn9file10 fileciteturn9file9
-
-So compared with the earlier raw-latent demo, this version is much closer to your intended deployment path.
