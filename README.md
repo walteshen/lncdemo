@@ -1,7 +1,5 @@
 # Three-terminal multi-hop LNC demo (CompressAI entropy-coded version)
 
-This version keeps the same **source / relay / destination** split as before, but the `wacnn-demo` path now uses **CompressAI `EntropyBottleneck.compress/decompress`** in the actual packet path instead of shipping raw `int16` latents.
-
 ## What changed in this version
 
 For `--engine wacnn-demo`:
@@ -89,3 +87,5 @@ This is the main knob controlling the trade-off between:
 - fewer/larger packets, and
 - safer per-packet payload size.
 
+## Checkpoint
+lambda=0.013:<https://drive.google.com/file/d/1Dio8SE9JJEI51EA2QndwzUuylfm0M9ua/view?usp=drive_link>
