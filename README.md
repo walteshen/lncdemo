@@ -1,16 +1,5 @@
 # Three-terminal multi-hop LNC demo (CompressAI entropy-coded version)
 
-## What changed in this version
-
-For `--engine wacnn-demo`:
-
-- **Source** runs `g_a`, then entropy-codes latent chunks with `entropy_bottleneck.compress(...)`.
-- **Relay** decompresses the received latent chunks, zero-fills missing chunks, runs `g_a_relay`, and entropy-codes the recoded latent again.
-- **Destination** decompresses the received recoded latent chunks and runs `g_s`.
-- Packet payloads are now **variable-length entropy-coded byte strings**, which is much closer to your own demo snippet and to the paper's *encoder -> entropy model -> packetization -> decoder* pipeline.
-
-This matches the uploaded base `WACNN` structure, where the model contains `EntropyBottleneck`, `g_a`, `g_a_relay`, and `g_s`. The training script also shows the base training path instantiating `WACNN(192, 192)`. fileciteturn9file2 fileciteturn9file3
-
 ## Important constraint
 
 This package now assumes:
