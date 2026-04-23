@@ -37,7 +37,7 @@ PYTHONPATH=. python check_checkpoint.py --checkpoint /path/to/checkpoint_best.pt
 ### Terminal 1: destination
 
 ```bash
-cd lnc_three_terminal_demo
+cd lncdemo
 PYTHONPATH=. python destination.py \
   --bind-port 9102 \
   --engine wacnn-demo \
@@ -49,7 +49,7 @@ PYTHONPATH=. python destination.py \
 ### Terminal 2: relay
 
 ```bash
-cd lnc_three_terminal_demo
+cd lncdemo
 PYTHONPATH=. python relay.py \
   --bind-port 9101 \
   --target-host 127.0.0.1 \
@@ -63,7 +63,7 @@ PYTHONPATH=. python relay.py \
 ### Terminal 3: source
 
 ```bash
-cd lnc_three_terminal_demo
+cd lncdemo
 PYTHONPATH=. python source.py \
   --target-host 127.0.0.1 \
   --target-port 9101 \
