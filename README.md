@@ -17,7 +17,7 @@ pip install torch pillow numpy compressai
 ## Recommended first check
 
 ```bash
-cd lnc_three_terminal_demo
+cd lncdemo
 PYTHONPATH=. python check_checkpoint.py --checkpoint /path/to/checkpoint_best.pth
 ```
 
