@@ -1,4 +1,7 @@
 # Three-terminal multi-hop LNC demo (CompressAI entropy-coded version)
+## Note
+
+This demo is provided to verify the relay recoding functionality in IP-based networks. The model used here is our baseline model, which is constructed using convolutional layers and GDN modules. We will also continue to release the full model weights and training code.
 
 ## Important constraint
 
